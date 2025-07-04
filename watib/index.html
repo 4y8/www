@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+<h1 id="watib">watib</h1>
+<p>Watib (WebAssembly Toolchain In Bigloo) is a (WIP) WebAssembly toolchain. It
+aims at being user friendly and fast. We currently support a big part of the
+current draft of the version 3 of the standard. See <a href="#missing">here</a> for more
+details on what is currently missing.</p>
+
+<p>
+The source code is available on <a href="https://github.com/4y8/watib">github</a>.
+</p>
+<h2 id="building">Building</h2>
+<p>To build watib, a working <a href="https://www-sop.inria.fr/indes/fp/Bigloo/">bigloo</a>
+distribution is required. You can, then, build it with:</p>
+<pre>$ make
+</pre>
+<h2 id="using">Using</h2>
+<p>Once built, watib can be called on a WebAssembly Text file to validate,
+optimise and convert it to binary format. It supports several options:</p>
+<ul>
+<li><code>-o &lt;file&gt;</code> to specify an output file,</li>
+<li><code>-k</code> or <code>--keep-going</code> to continue validation after an error has been
+encoutered (won&#39;t produce an output file),</li>
+<li><code>-j &lt;n&gt;</code> to use more than one job.</li>
+<li>Overview</li>
+<li>The <code>Val</code> directory contains the validation logic. In particular, the
+<code>instruction-types.sch</code> file contains the descritption of the type of most
+instructions. It also handles the desuggaring of the text format.</li>
+<li>The <code>Type</code> directory contains functions to manipulate and compare types.</li>
+<li>The <code>Ast</code> directory contains the internal representation of wasm code
+outputted by the validation and used by the two following directories.</li>
+<li>The <code>Bin</code> directory contains the translation to the binary format logic.</li>
+<li>The <code>Opt</code> directory contains the optimisation logic. Each subdirectory is an
+optimisation pass and everything is glued together by the <code>optimise.scm</code> file.</li>
+<li>The <code>Misc</code> directory contains various routines used by the previous
+directories.
+The functions in the first for directories are more or less straightforward
+transcriptions of the spec. The code is annotated with the positions in the spec
+it implements (the precision of the annotations depends on the subtlety of what
+is being implemented).</li>
+</ul>
+
+<h2 id="missing">Missing</h2>
+
+Watib doesn&#39;t support the following features yet (the list may be incomplete):
+<ul>
+<li>Tables,</li>
+<li>Memory instructions,</li>
+<li>Vector instructions,</li>
+<li>Active data declarations,</li>
+<li>Elem declarations other than <code>(elem declare func ...)</code>,</li>
+<li>Start declarations,</li>
+<li>Type indices in type-uses (i.e. functions have to be declared with <code>(func (param ...)* (result ...)*...)</code>,</li>
+<li>Offset and alignment in <code>load8_sx</code> and <code>store8</code>.
+If you want to use watib and need one of these, feel free to raise an issue or
+send an email at <a href="mailto:aghilas.boussaa@normalesup.org">aghilas.boussaa@normalesup.org</a>.</li>
+</ul>
+
+</body>

@@ -1,0 +1,21 @@
+body {
+	font-family: "Lucida Grande", "Trebuchet MS", sans-serif;
+	padding: 1em;
+	margin: 0 auto;
+ 	max-width: 820px;
+ 	flex-grow: 1;
+ 	display: block;
+ 	padding-left: 10px;
+ 	padding-right: 10px;
+}
+
+header {
+	text-align: right;
+}
+
+pre {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 2em;
+	background-color: rgb(200, 200, 200);
+}
