@@ -3,10 +3,25 @@ body {
 	padding: 1em;
 	margin: 0 auto;
  	max-width: 820px;
- 	flex-grow: 1;
- 	display: block;
  	padding-left: 10px;
  	padding-right: 10px;
+}
+
+.subtitle {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.subtitle a {
+	padding: 10px;
+}
+
+a {
+	color: #007bff;
+}
+
+a:visited {
+	color: #003e80;
 }
 
 header {
@@ -14,8 +29,7 @@ header {
 }
 
 pre {
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	padding-left: 2em;
-	background-color: rgb(200, 200, 200);
+	padding: 0.4rem 1rem;
+	margin: 0 -1rem;
+	background-color: rgb(230, 230, 230);
 }
