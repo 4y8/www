@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <h1>Wasm-as's extensions to the specification</h1>
+  <h1>Wasm-as' extensions to the specification</h1>
   <p>
     We try to list wasm-as' extensions to the spec, i.e. code modification made
     by wasm-as silently that do not appear specification. To our knowledge, this
@@ -17,18 +17,32 @@
   </p>
   <h2>Unreachable insertion</h2>
   <p>
-    Wasm-as tend to replace unreachable code by unreachable and add unreachable
-    after blocks that don't exit. While semantically preserving, this
-    transformation can transform invalid code in valid code. For instance, the
-    following function is not well-typed according to the spec. But wasm-as
-    inserts an <code>unreachable</code> at the end, making it well type.
+    Wasm-as tend to replace dead code by <code>unreachable</code> and
+    add <code>unreachable</code> after blocks that don't exit. While
+    semantically preserving, this transformation can transform invalid code in
+    valid code. For instance, the following function is not well-typed according
+    to the spec. But wasm-as inserts an <code>unreachable</code> at the end,
+    making it well-typed.
   </p>
   <pre>
 (func (result i32)
   (if (i32.const 0)
     (then (return (i32.const 0)))
-    (else (return (i32.const 0)))))
-  </pre>
+    (else (return (i32.const 0)))))</pre>
+
+  <p>
+    In the following piece of code, the <code>br</code> is not well-typed but
+    wasm-as accepts it:
+  </p>
+  <pre>
+(func
+  (result i32)
+  (block $l (result i32)
+    (i32.const 0)
+    (if
+      (then (return (i32.const 0)))
+      (else (return (i32.const 0))))
+    (br $l)))</pre>
   <h2>Automatic function reference declaration</h2>
 
   <p>
