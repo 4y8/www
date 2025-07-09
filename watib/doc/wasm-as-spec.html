@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+  <h1>Wasm-as's extensions to the specification</h1>
+  <p>
+    We try to list wasm-as' extensions to the spec, i.e. code modification made
+    by wasm-as silently that do not appear specification. To our knowledge, this
+    behaviours are not documented. The list is non-exhaustive. Feel free to
+    contact us if you find anything missing.
+  </p>
+  <h2>Unreachable insertion</h2>
+  <p>
+    Wasm-as tend to replace unreachable code by unreachable and add unreachable
+    after blocks that don't exit. While semantically preserving, this
+    transformation can transform invalid code in valid code. For instance, the
+    following function is not well-typed according to the spec. But wasm-as
+    inserts an <code>unreachable</code> at the end, making it well type.
+  </p>
+  <pre>
+(func (result i32)
+  (if (i32.const 0)
+    (then (return (i32.const 0)))
+    (else (return (i32.const 0)))))
+  </pre>
+  <h2>Automatic function reference declaration</h2>
+
+  <p>
+    According to the specification, functions appearing in
+    a <code>ref.func</code> have to appear outside the function bodies (in a
+    global or in an elem section). Wasm-as puts all the undeclared function
+    reference in an <code>elem declare func</code> section.
+  </p>
+  <h2>Sign extension insertion for packed get</h2>
+  <p>
+    According to the specification, when using <code>array.get</code>
+    or <code>struct.get</code> on a packed field (<code>i8</code>
+    or <code>i16</code>), a sign extension has to be specified. It means that
+    either <code>.get_u</code> or <code>.get_s</code> has to be used. Wasm-as
+    allows <code>.get</code> instructions on packed types, defaulting to
+    unsigned.
+  </p>
+</body>
