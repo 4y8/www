@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+  <h1>Adding an optimisation pass</h1>
+
+  <p>
+    Each optimisation pass is contained in a subdirectory of <code>Opt/</code>.
+    The main logic of the pass should be contained in the <code>walk.scm</code>
+    file.
+  </p>
+
+  <p>
+    Passes rely on Bigloo's object system for their implementation. This
+    architecture is inspired by the one of the Bigloo compiler itself. The
+    different classes of instruction are described in <code>Ast/node.scm</code>.
+    Each optimisation pass, then, is coded with <em>generic</em> functions
+    and <em>methods</em>. See the <code>Opt/Unreachable</code>
+    or <code>Opt/Peephole</code> passes for readable examples.
+  </p>
+
+</body>

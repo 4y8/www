@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+  <h1>Adding an instruction</h1>
+  <p>
+    To add a plain instruction with a fixed number of parameters (which is the
+    case of most instructions) which do not require any kind of type variables
+    (such as <code>ref.as_non_null</code>), one needs to modify the following
+    files:
+  </p>
+  <ul>
+    <li> <code>Val/instruction-types.sch</code> to add the type of the
+      instruction to the validation pass, </li>
+    <li> <code>Asm/opcodes.sch</code> to add the opcode of the instruction, if
+      the opcode depends on the argument it has to be added in an ad-hoc way to
+      <code>Asm/binary.scm</code>.
+  </ul>
+  <p>
+    The format in which all these additions have to be made is described in each
+    file individually and the already present instructions serve as examples.
+  </p>
+
+  <p>
+    For other instructions, the files <code>Val/validate.scm</code>
+    and <code>Asm/binary.scm</code> will have to be modified, for validation and
+    assembly. To replace the need of type variables, instructions can be
+    validated by the <code>adhoc-instr</code> function of
+    the <code>Val/validate.scm</code>. There they can rely on the stack for
+    their validation. For instance, <code>ref.as_non_null</code> will be of
+    type <code>(ref null ht) -> (ref ht)</code> where <code>ht</code> is the
+    heap type corresponding to the reference type on top of the stack.
+  </p>
+
+  <p>
+    The file `Ast/node.scm` should also be modified to record new kinds of
+    instructions such as new blocks.
+  </p>
+
+  <p>
+    Each optimisation pass should be modified to take the new instructions into
+    account (roughly everything in <code>Opt/</code>). Depending on the
+    instruction and the pass their could be no necessary modification.
+  </p>
+</body>

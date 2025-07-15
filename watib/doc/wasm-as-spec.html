@@ -60,4 +60,26 @@
     allows <code>.get</code> instructions on packed types, defaulting to
     unsigned.
   </p>
+  <h2>Replacement of block input values by locals</h2>
+  <p>
+    Binaryen's README mentions that block input values are represented in the IR by
+    <code>pop</code> subexpressions for <code>catch</code> blocks and not
+    supported for the others. It is not mentionned that code using block input
+    values will be replaced by the use local variables. For instance, the
+    following code:
+  </p>
+  <pre>
+(i32.const 0)
+(block (param i32)
+  (drop))
+  </pre>
+  <p>
+    is assembled to:
+  </p>
+  <pre>
+(i32.const 0)
+(local.set 0)
+(local.get 0)
+(drop)
+  </pre>
 </body>

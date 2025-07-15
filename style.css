@@ -2,9 +2,9 @@ body {
 	font-family: "Lucida Grande", "Trebuchet MS", sans-serif;
 	padding: 1em;
 	margin: 0 auto;
- 	max-width: 820px;
- 	padding-left: 10px;
- 	padding-right: 10px;
+	max-width: 760px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .subtitle {
