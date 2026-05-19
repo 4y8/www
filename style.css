@@ -17,6 +17,7 @@ body {
 }
 
 .footer {
+	padding-top: 10px;
 	margin-top: 30px;
 	border-top: 1px solid #000000;
 }
@@ -41,4 +42,15 @@ pre {
 	padding: 0.4rem 1rem;
 	margin: 0 -1rem;
 	background-color: rgb(230, 230, 230);
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+	padding: 0.4rem 1rem;
+	margin: 0 -1rem;
+	border: none;
+	outline: none;
+	background-color: rgb(230, 230, 230);
+	scrollbar-width: none;
 }

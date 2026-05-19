@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+<h1 id="met">met playground 
+<button type="button" id="run">run</button>
+</h1>
+<textarea spellcheck="false" cols="90" rows="30" id="code">
+type unit = Unit
+
+eff gen [a] = yield : a => unit
+
+val lucile : [gen string](unit -> unit)
+let lucile! = do yield "Lucile"
+
+val greet : [](<gen string>(unit -> unit) -> unit)
+let greet m =
+  handle m! with
+  | return v => v
+  | yield name k =>
+    print ("Hello " ^ name ^ "!");
+    k!
+  end
+
+let main = greet lucile
+</textarea>
+<br>
+<br>
+<pre id="out">
+</pre>
+
+<div class="footer">
+  <a href="../index.html">Home</a> | <a href="../license">License</a>
+</div>
+<script src="./main.bc.js"></script>
+</body>
