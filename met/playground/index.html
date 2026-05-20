@@ -9,7 +9,12 @@
 
 <body>
 <h1 id="met">met playground 
-<button type="button" id="run">run</button>
+<button id="run">run</button>
+<button id="clear">clear</button>
+<select id="example" name="example">
+	<option value="">load an example</option>
+	<option value="higher-order-effects">Higher-Order effects</option>
+</select>
 </h1>
 <textarea spellcheck="false" cols="90" rows="30" id="code">
 type unit = Unit
@@ -39,4 +44,5 @@ let main = greet lucile
   <a href="../index.html">Home</a> | <a href="../license">License</a>
 </div>
 <script src="./main.bc.js"></script>
+<script src="./loadex.js"></script>
 </body>
