@@ -40,14 +40,14 @@ header {
 
 pre {
 	padding: 0.4rem 1rem;
-	font-family: "inconsolata", mono;
+	font-family: "inconsolata", monospace;
 	margin: 0 -1rem;
 	background-color: rgb(230, 230, 230);
 }
 
 textarea {
 	resize: none;
-	font-family: "inconsolata", mono;
+	font-family: "inconsolata", monospace;
 	width: 100%;
 	padding: 0.4rem 1rem;
 	margin: 0 -1rem;
