@@ -2,7 +2,7 @@ body {
 	font-family: "Lucida Grande", "Trebuchet MS", sans-serif;
 	padding: 1em;
 	margin: 0 auto;
-	max-width: 44em;
+	max-width: 54em;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -36,6 +36,19 @@ a:visited {
 
 header {
 	text-align: right;
+}
+
+h1 {
+	background-color: rgb(231, 255, 221);
+	padding: 0.4rem 1rem;
+	margin: 0.4rem -1rem;
+}
+
+
+h2 {
+	background-color: rgb(208, 235, 255);
+	padding: 0.4rem 1rem;
+	margin: 0.4rem -1rem;
 }
 
 pre {
