@@ -42,6 +42,14 @@ h1 {
 	background-color: rgb(231, 255, 221);
 	padding: 0.4rem 1rem;
 	margin: 0.4rem -1rem;
+	display: flex;
+	align-items: stretch;
+}
+
+span {
+	margin-left: auto;       /* must have a height */
+	display: flex;
+	align-items: center;
 }
 
 
@@ -67,4 +75,21 @@ textarea {
 	border: none;
 	outline: none;
 	background-color: rgb(230, 230, 230);
+}
+
+button {
+	background-color: rgb(255, 221, 244);
+	border: none;
+	font-weight: bold;
+	padding: 0.4rem 0.4rem;
+	margin-left: 0.4em;
+	margin-right: 0.4em;
+}
+
+select {
+	border: none;
+	background-color: rgb(255, 221, 244);
+	padding: 0.4rem 0.4rem;
+	font-weight: bold;
+	margin-left: 0.4em;
 }
