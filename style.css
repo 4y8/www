@@ -46,7 +46,7 @@ h1 {
 	align-items: stretch;
 }
 
-span {
+.playground-right {
 	margin-left: auto;       /* must have a height */
 	display: flex;
 	align-items: center;
@@ -78,6 +78,7 @@ textarea {
 }
 
 button {
+	font-family: "Lucida Grande", "Trebuchet MS", sans-serif;
 	background-color: rgb(255, 221, 244);
 	border: none;
 	font-weight: bold;
@@ -87,6 +88,7 @@ button {
 }
 
 select {
+	font-family: "Lucida Grande", "Trebuchet MS", sans-serif;
 	border: none;
 	background-color: rgb(255, 221, 244);
 	padding: 0.4rem 0.4rem;
